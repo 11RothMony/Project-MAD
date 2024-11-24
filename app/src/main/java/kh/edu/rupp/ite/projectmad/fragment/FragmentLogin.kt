@@ -1,4 +1,4 @@
-package Fragment
+package kh.edu.rupp.ite.projectmad.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

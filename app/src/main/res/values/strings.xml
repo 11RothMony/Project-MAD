@@ -7,4 +7,8 @@
     <string name="login">Login</string>
     <string name="sigup">Sigup</string>
     <string name="don_t_have_an_account">Don’t have an Account ?</string>
+    <string name="add">ADD</string>
+    <string name="title">Crispy Thin Crust Pizza</string>
+    <string name="dollar_sign">$</string>
+    <string name="isvergetarian">vegetarian </string>
 </resources>
