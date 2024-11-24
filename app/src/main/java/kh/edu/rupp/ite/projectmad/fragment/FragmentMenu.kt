@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.squareup.picasso.Picasso
 import kh.edu.rupp.ite.model.ApiResponse
 import kh.edu.rupp.ite.model.State
 import kh.edu.rupp.ite.projectmad.databinding.FragmentMenuBinding
@@ -69,6 +70,11 @@ class FragmentMenu : Fragment() {
         binding.size.text = ListMenu.size
         binding.price.text = ListMenu.price.toString()
         binding.vergetatial.text = ListMenu.isVegetarian.toString()
+
+        Picasso.get()
+            .load(ListMenu.image)
+            .into(binding.image)
+
 
     }
 
