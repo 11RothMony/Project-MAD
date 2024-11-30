@@ -1,6 +1,6 @@
-package kh.edu.rupp.ite.projectmad.model
+package kh.edu.rupp.ite.projectmad.data.model
 
-data class ListMenuKotlin(
+data class MenuListData(
     val id: Int,
     val name: String,
     val image: String,
