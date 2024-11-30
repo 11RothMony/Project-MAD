@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="70px"
+    tools:context=".fragment.create_account">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_ios_24"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="100px"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Create Your Account"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:gravity="center"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter details below to create new account"
+            android:textStyle="bold"
+            android:layout_marginTop="40px"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:paddingBottom="50px"
+            />
+        <EditText
+            android:id="@+id/editName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="text"
+            android:text="Your name"
+            android:textSize="15sp"
+            android:background="@drawable/round_corner"
+            android:padding="25px"
+            android:layout_marginTop="40px"
+            android:textColor="#808080"
+            />
+        <EditText
+            android:id="@+id/editBird"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            android:text="DD/MM/YYY*"
+            android:textSize="15sp"
+            android:background="@drawable/round_corner"
+            android:padding="25px"
+            android:layout_marginTop="40px"
+            android:textColor="#808080"
+            />
+        <EditText
+            android:id="@+id/editPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="phone"
+            android:text="Your phone number*"
+            android:textSize="15sp"
+            android:background="@drawable/round_corner"
+            android:padding="25px"
+            android:layout_marginTop="40px"
+            android:textColor="#808080"
+            />
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textVisiblePassword"
+            android:text="Enter password*"
+            android:textSize="15sp"
+            android:background="@drawable/round_corner"
+            android:padding="25px"
+            android:layout_marginTop="40px"
+            android:textColor="#808080"
+            />
+        <EditText
+            android:id="@+id/editCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:text="referral Code"
+            android:textSize="15sp"
+            android:background="@drawable/round_corner"
+            android:padding="25px"
+            android:layout_marginTop="40px"
+            android:textColor="#808080"
+            />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/background_button"
+            android:text="Create Account"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create Your Account ? "
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColor="#808080"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login "
+            android:textStyle="normal"
+            android:textSize="15sp"
+            android:textColor="#0b3f6a"
+            android:layout_marginTop="0px"
+            />
+    </LinearLayout>
+
+</LinearLayout>
