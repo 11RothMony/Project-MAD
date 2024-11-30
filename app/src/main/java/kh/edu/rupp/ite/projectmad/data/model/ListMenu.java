@@ -1,4 +1,4 @@
-package kh.edu.rupp.ite.projectmad.model;
+package kh.edu.rupp.ite.projectmad.data.model;
 
 public class ListMenu {
     private String id;
