@@ -57,5 +57,9 @@ dependencies {
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation ("androidx.activity:activity-ktx:1.6.1")
     implementation ("androidx.fragment:fragment-ktx:1.6.1")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0") // Use the latest version
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+
 
 }
