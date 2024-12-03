@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Project MAD</string>
+    <string name="login_your_account">Login Your Account</string>
+    <string name="enter_registered_email_or_phone_number_and_password_to_login_your_account">Enter registered email or phone number and password to login your account</string>
+    <string name="your_phone_number">Your Phone Number</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="sigup">Sigup</string>
+    <string name="don_t_have_an_account">Don’t have an Account ?</string>
+    <string name="add">ADD</string>
+    <string name="title">Crispy Thin Crust Pizza</string>
+    <string name="dollar_sign">$</string>
+    <string name="isvergetarian">vegetarian </string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="account">Account</string>
+    <string name="pizza">Pizza</string>
+    <string name="checkin">Checkin</string>
+    <string name="burger">Burger</string>
+    <string name="drink">Drink</string>
+    <string name="menu">Category Menu</string>
+    <string name="new_product">New Product</string>
+    <string name="most_popular">Most Popular</string>
 </resources>
