@@ -3,8 +3,12 @@ package kh.edu.rupp.ite.projectmad.ui.element.activity
 import HomeFragment
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
+import com.google.firebase.Firebase
+import com.google.firebase.FirebaseApp
+import com.google.firebase.database.database
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.databinding.ActivityMainBinding
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.AccountFragment
@@ -30,7 +34,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
         setupFragment()
         setupBottomNavBar()
-
+        FirebaseApp.initializeApp(this)
     }
 
     private fun setupFragment() {
@@ -69,5 +73,7 @@ class MainActivity : BaseActivity() {
         activeFragment = fragment
         fragmentTransaction.commit()
     }
+
+
 
 }

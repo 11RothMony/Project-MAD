@@ -6,7 +6,7 @@ import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import retrofit2.http.GET
 
 interface ApiService  {
-//        @GET("879b-293b-4171-b49a")
     @GET("5045-8098-4e99-b7f0")
+//    @GET("menu")
     suspend fun loadMenu(): ApiResponse<List<MenuListData>>
 }
