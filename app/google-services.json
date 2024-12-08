@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "639187956834",
+    "firebase_url": "https://profileauth-a05fd-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "profileauth-a05fd",
+    "storage_bucket": "profileauth-a05fd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639187956834:android:8e506a69ef7c0a6af2cd3b",
+        "android_client_info": {
+          "package_name": "kh.edu.rupp.ite.projectmad"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs_YlbyAS7Zs8UV96gRNSxRPVa6I1i08w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639187956834:android:2c0eaf32133c6daff2cd3b",
+        "android_client_info": {
+          "package_name": "kh.edu.rupp.ite.projectmad.ui.element.activity"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAs_YlbyAS7Zs8UV96gRNSxRPVa6I1i08w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,6 @@
 package kh.edu.rupp.ite.projectmad.data.api.client
 
+import kh.edu.rupp.ite.projectmad.BuildConfig
 import kh.edu.rupp.ite.projectmad.data.api.service.ApiService
 import kh.edu.rupp.ite.projectmad.global.AppConstant
 import kh.edu.rupp.ite.visitme.data.api.client.HeaderInterceptor
@@ -22,7 +23,8 @@ class ApiClient private constructor() {
 
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(AppConstant.API_BASE_URL)
+//        .baseUrl(AppConstant.API_BASE_URL)
+        .baseUrl(BuildConfig.apiBaseUrl)
         .client(httpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
