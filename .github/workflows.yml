@@ -1,0 +1,21 @@
+
+image: ghcr.io/leapkh/android-ci:1.0.2
+variables:
+  ANDROID_HOME: "/sdk"
+  GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+before_script:
+  - echo "$KEYSTORE_BASE_64" | base64 -d > "app/VisitMe.jks"
+  - chmod +x ./gradlew
+  - chmod +x ./build.sh
+stages:
+  - build
+build:
+  stage: build
+  only:
+    - /^(dev|prd)-\d(\.\d{1,2}){3}$/
+  script:
+    - ./build.sh
+  artifacts:
+    paths:
+      - visit-me.apk
+# 1:32:56
