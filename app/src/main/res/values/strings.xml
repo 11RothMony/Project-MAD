@@ -2,7 +2,7 @@
     <string name="app_name">Food Delivery</string>
     <string name="login_your_account">Login Your Account</string>
     <string name="enter_registered_email_or_phone_number_and_password_to_login_your_account">Enter registered email or phone number and password to login your account</string>
-    <string name="your_phone_number">Your Phone Number</string>
+    <string name="your_phone_number">Your Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="sigup">Sigup</string>
@@ -22,4 +22,5 @@
     <string name="menu">Category Menu</string>
     <string name="new_product">New Product</string>
     <string name="most_popular">Most Popular</string>
+    <string name="loginProfile">Login</string>
 </resources>
