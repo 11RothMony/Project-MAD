@@ -80,7 +80,7 @@ class FragmentMenu : BaseFragment() {
         binding.recycleview.adapter = ListMenuAdaptor(menu)
     }
 
-    fun switchToHome() {
+    private fun switchToHome() {
         val fragmentHome = HomeFragment() // Create an instance of the fragment
         parentFragmentManager.beginTransaction()
             .replace(R.id.lyFragment, fragmentHome) // Replace the current fragment
