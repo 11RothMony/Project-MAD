@@ -25,13 +25,18 @@ android {
         viewBinding = true
         buildConfig = true
     }
+
+
     flavorDimensions += "FoodDelivery"
     productFlavors {
         create("dev") {
             dimension = "FoodDelivery"
             applicationId = "kh.edu.rupp.ite.projectmad.dev"
             resValue("string", "app_name", "Food Delivery Test")
-            buildConfigField("String", "apiBaseUrl", "\"http://10.0.2.2:3000/testing/\"")
+//            buildConfigField("String", "apiBaseUrl", "\"http://10.0.2.2:3000/testing/\"")
+            buildConfigField("String", "apiBaseUrl", "\"http://10.0.2.2:5007/profileauth-a05fd/us-central1/api/\"")
+//            buildConfigField("String", "apiBaseUrl", "\"http://127.0.0.1:5007/profileauth-a05fd/us-central1/api/\"")
+
         }
         create("prd") {
             dimension = "FoodDelivery"
@@ -50,7 +55,6 @@ android {
             keyPassword = "123456"
         }
     }
-
 
 
 
@@ -76,6 +80,7 @@ android {
     }
 }
 
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -84,6 +89,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.1.0")
+//    implementation("androidx.security:security-crypto-ktx:1.1.0-alpha06")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -96,10 +102,12 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.11.0") // Use the latest version
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.security:security-crypto:1.1.0-alpha06")
 
 
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+//    implementation ("com.google.firebase:firebase-firestore-ktx:25.1.1")
 //    implementation ("com.google.firebase:firebase-auth-ktx")
 //    implementation ("com.google.firebase:firebase-functions-ktx")
 
