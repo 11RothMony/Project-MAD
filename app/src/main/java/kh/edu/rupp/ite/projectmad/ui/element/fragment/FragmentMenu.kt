@@ -39,6 +39,7 @@ class FragmentMenu : BaseFragment() {
 
         val button = view.findViewById<ImageView>(R.id.arrowback)
 
+
         setupObserver()
         viewModel.loadMenu()
 
@@ -50,7 +51,6 @@ class FragmentMenu : BaseFragment() {
 
 
     private fun setupObserver() {
-
         viewModel.menuListData.observe(viewLifecycleOwner) {
             handleState(it)
         }
@@ -66,6 +66,7 @@ class FragmentMenu : BaseFragment() {
 
             State.Error -> {
                 showAlert("Error", state.message ?: "unexpected Error")
+                Log.d("ErroronMenu", state.message?: "k")
                 hideLoading()
             }
 
