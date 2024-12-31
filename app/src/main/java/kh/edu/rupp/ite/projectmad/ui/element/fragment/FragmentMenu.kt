@@ -3,6 +3,7 @@ package kh.edu.rupp.ite.projectmad.ui.element.fragment
 import HomeFragment
 import ListMenuAdaptor
 import ListMenuViewModel
+import android.icu.text.Transliterator.Position
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.ApiState
 import kh.edu.rupp.ite.projectmad.data.model.State
@@ -18,9 +20,11 @@ import kh.edu.rupp.ite.projectmad.databinding.FragmentMenuBinding
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 
 
+
 class FragmentMenu : BaseFragment() {
 
     private val viewModel by viewModels<ListMenuViewModel>()
+
 
     private lateinit var binding: FragmentMenuBinding
 
@@ -38,6 +42,8 @@ class FragmentMenu : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val button = view.findViewById<ImageView>(R.id.arrowback)
+        val buttonAdd: RecyclerView = view.findViewById(R.id.recycleview)
+
 
 
         setupObserver()
@@ -45,8 +51,8 @@ class FragmentMenu : BaseFragment() {
 
         button.setOnClickListener {
             switchToHome()
-
         }
+
     }
 
 
@@ -66,7 +72,7 @@ class FragmentMenu : BaseFragment() {
 
             State.Error -> {
                 showAlert("Error", state.message ?: "unexpected Error")
-                Log.d("ErroronMenu", state.message?: "k")
+                Log.d("ErroronMenu", state.message ?: "k")
                 hideLoading()
             }
 
@@ -85,11 +91,12 @@ class FragmentMenu : BaseFragment() {
         val fragmentHome = HomeFragment() // Create an instance of the fragment
         parentFragmentManager.beginTransaction()
             .replace(R.id.lyFragment, fragmentHome) // Replace the current fragment
-            .addToBackStack(null) // Optional: Add the transaction to the back stack
+            .addToBackStack("HomeFragment") // Optional: Add the transaction to the back stack
             .commit()
     }
 
 
 }
+
 
 

@@ -12,7 +12,9 @@ import com.google.firebase.database.database
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.databinding.ActivityMainBinding
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.AccountFragment
+import kh.edu.rupp.ite.projectmad.ui.element.fragment.BaseFragment
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.CartFragment
+import kh.edu.rupp.ite.projectmad.ui.element.fragment.FragmentMenu
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.OrderFragment
 
 import kh.edu.rupp.ite.visitme.ui.element.activity.BaseActivity
@@ -24,7 +26,11 @@ class MainActivity : BaseActivity() {
     private val cartFragement = CartFragment()
     private val orderFragment = OrderFragment()
     private val accountFragment = AccountFragment()
+
     private lateinit var activeFragment: Fragment
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,16 +43,21 @@ class MainActivity : BaseActivity() {
         FirebaseApp.initializeApp(this)
     }
 
+
     private fun setupFragment() {
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        activeFragment = homeFragment
+        if (supportFragmentManager.fragments.isEmpty()) {
+            val fragmentTransaction = supportFragmentManager.beginTransaction()
+            activeFragment = homeFragment
 
-        fragmentTransaction.add(binding.lyFragment.id, homeFragment)
-        fragmentTransaction.add(binding.lyFragment.id, cartFragement).hide(cartFragement)
-        fragmentTransaction.add(binding.lyFragment.id, orderFragment).hide(orderFragment)
-        fragmentTransaction.add(binding.lyFragment.id, accountFragment).hide(accountFragment)
+            fragmentTransaction.add(binding.lyFragment.id, homeFragment)
+            fragmentTransaction.add(binding.lyFragment.id, cartFragement).hide(cartFragement)
+            fragmentTransaction.add(binding.lyFragment.id, orderFragment).hide(orderFragment)
+            fragmentTransaction.add(binding.lyFragment.id, accountFragment).hide(accountFragment)
 
-        fragmentTransaction.commit()
+
+
+            fragmentTransaction.commit()
+        }
     }
 
     private fun setupBottomNavBar() {
@@ -55,25 +66,47 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun handleOnNavigationItemSelected(item: MenuItem): Boolean{
-        when (item.itemId){
+    private fun handleOnNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
             R.id.menuHome -> showFragement(homeFragment)
             R.id.menuCart -> showFragement(cartFragement)
             R.id.menuOrders -> showFragement(orderFragment)
             R.id.menuAccount -> showFragement(accountFragment)
 
+
         }
         return true
     }
 
-    private fun showFragement(fragment: Fragment){
+    private fun showFragement(fragment: Fragment) {
+        if (activeFragment == fragment) return
         val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+        if (!fragment.isAdded) {
+            // Add the fragment if it's not already added
+            removeCurrentFragment()
+            fragmentTransaction.add(R.id.lyFragment, fragment)
+        }
+        // Hide the currently active fragment
         fragmentTransaction.hide(activeFragment)
+
+        // Show the new fragment
         fragmentTransaction.show(fragment)
+
+        // Update the active fragment reference
         activeFragment = fragment
+
         fragmentTransaction.commit()
     }
 
+    private fun removeCurrentFragment() {
+        val currentFragment = supportFragmentManager.findFragmentById(R.id.lyFragment)
+        if (currentFragment != null) {
+            supportFragmentManager.beginTransaction()
+                .remove(currentFragment)
+                .commit()
+        }
+    }
 
 
 }
