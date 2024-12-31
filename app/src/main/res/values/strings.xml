@@ -23,4 +23,11 @@
     <string name="new_product">New Product</string>
     <string name="most_popular">Most Popular</string>
     <string name="loginProfile">Login</string>
+    <string name="your_cart_is_empty_please_add_item">Your cart is empty, please add item</string>
+    <string name="emptyproduct">emptyProduct</string>
+    <string name="cart_header">Cart</string>
+    <string name="clear_cart">Clear Cart</string>
+    <string name="equal">=</string>
+    <string name="minus">-</string>
+    <string name="add_sign">+</string>
 </resources>

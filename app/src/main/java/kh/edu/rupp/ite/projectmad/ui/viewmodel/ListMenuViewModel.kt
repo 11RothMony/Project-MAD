@@ -31,7 +31,6 @@ class ListMenuViewModel : ViewModel() {
 //                    ApiState.success(menuResponse.data)
                     ApiState.success(menuResponse.data)
 
-
                 } else {
                     Log.e("error"," ${menuResponse.message}")
                     ApiState.error(menuResponse.message)

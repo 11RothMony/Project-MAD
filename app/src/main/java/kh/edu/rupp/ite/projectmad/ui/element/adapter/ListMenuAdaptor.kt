@@ -9,13 +9,6 @@ import kh.edu.rupp.ite.projectmad.databinding.ViewholderMenuBinding
 
 class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHolder>() {
 
-//    private var data = emptyList<MenuListData>()
-
-//    fun setData(data: List<MenuListData>) {
-//        this.data = data
-//    }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewholderMenuBinding.inflate(layoutInflater, parent, false)
@@ -29,6 +22,7 @@ class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHo
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val menu = data[position]
         holder.bind(menu)
+
     }
 
 }
@@ -42,10 +36,22 @@ class MenuViewHolder(private val binding: ViewholderMenuBinding) : ViewHolder(bi
         binding.price.text = menu.price.toString()
         binding.vergetatial.text = menu.isVegetarian.toString()
 
+
+        binding.addButton.setOnClickListener {
+            Log.d("Clicked", "${menu.id}")
+
+            addData(menu)
+        }
+
         Picasso.get()
             .load(menu.image)
             .into(binding.image)
 
     }
+}
 
+fun addData(menu: MenuListData) {
+    val mutableList: MutableList<MenuListData> = arrayListOf()
+    mutableList.add(menu)
+    Log.d("ArrayList", "Updated List: ${mutableList.joinToString { it.name }}")
 }
