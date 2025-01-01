@@ -7,4 +7,5 @@ data class MenuListData(
     val price: Double,
     val size: String,
     val isVegetarian: Boolean,
+    val quantity: Int = 1,
 )
