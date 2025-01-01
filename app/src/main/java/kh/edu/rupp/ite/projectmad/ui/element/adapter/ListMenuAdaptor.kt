@@ -1,9 +1,11 @@
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.squareup.picasso.Picasso
+import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.ViewholderMenuBinding
 
@@ -35,23 +37,21 @@ class MenuViewHolder(private val binding: ViewholderMenuBinding) : ViewHolder(bi
         binding.size.text = menu.size
         binding.price.text = menu.price.toString()
         binding.vergetatial.text = menu.isVegetarian.toString()
-
-
-        binding.addButton.setOnClickListener {
-            Log.d("Clicked", "${menu.id}")
-
-            addData(menu)
-        }
-
         Picasso.get()
             .load(menu.image)
             .into(binding.image)
 
+        binding.addButton.setOnClickListener {
+//            addData(menu)
+            CartManager.addToCart(menu)
+
+        }
+
     }
 }
 
-fun addData(menu: MenuListData) {
-    val mutableList: MutableList<MenuListData> = arrayListOf()
-    mutableList.add(menu)
-    Log.d("ArrayList", "Updated List: ${mutableList.joinToString { it.name }}")
-}
+//fun addData(menu: MenuListData) {
+//    val mutableList: MutableList<MenuListData> = arrayListOf()
+//    mutableList.add(menu)
+//    Log.d("ArrayList", "Updated List: ${mutableList.joinToString { it.name }}")
+//}
