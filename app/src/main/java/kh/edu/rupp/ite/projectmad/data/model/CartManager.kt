@@ -26,8 +26,15 @@ object CartManager {
 
 
 
-    fun clearCart() {
+    fun clearCart()  {
+        Log.d("clear Cart", "yea it clear")
         cartItems.clear()
+
+    }
+
+    fun deleteItemById(id: Int) {
+        cartItems.removeAll { it.id == id }
+        Log.d("CartManager", "Item with id $id removed")
     }
 
     fun getTotalPrice(): Double = cartItems.sumOf { it.price * it.quantity }
