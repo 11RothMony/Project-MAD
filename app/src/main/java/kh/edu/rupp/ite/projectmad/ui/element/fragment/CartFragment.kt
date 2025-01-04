@@ -3,7 +3,6 @@ package kh.edu.rupp.ite.projectmad.ui.element.fragment
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
@@ -25,8 +24,11 @@ class CartFragment : BaseFragment() {
 
     private lateinit var emptyCart: LinearLayout
     private lateinit var recyclerViewOnCart: RecyclerView
-    private lateinit var viewLine : View
-    private lateinit var resultPrice : TextView
+    private lateinit var viewLine: View
+    private lateinit var resultPrice: TextView
+    private lateinit var button: TextView
+    private lateinit var adapter: ListCartAdapter
+//    private lateinit var deleteItem: ImageView
 
 
     override fun onCreateView(
@@ -45,8 +47,19 @@ class CartFragment : BaseFragment() {
         recyclerViewOnCart = view.findViewById(R.id.recycleView_on_Cart)
         viewLine = view.findViewById(R.id.viewLine)
         resultPrice = view.findViewById(R.id.totalPriceInCart)
+        button = view.findViewById(R.id.button_clearCart)
+
+
+
         setupObserver()
         cartViewModel.loadItemCart()
+
+
+        button.setOnClickListener {
+            cartViewModel.clearCart()
+        }
+
+
     }
 
     private fun setupObserver() {
@@ -64,20 +77,37 @@ class CartFragment : BaseFragment() {
                 viewLine.visibility = View.VISIBLE
             }
         }
-            cartViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
-                val formattedPrice = price?.let { "%.2f".format(it) } ?: "0.00"
-               Log.d("totalPrice", formattedPrice)
-                resultPrice.text = formattedPrice
 
-                // Update total price UI
-    //            totalPriceTextView.text = "Total: \$${"%.2f".format(price)}"
-            }
+        cartViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
+            val formattedPrice = price?.let { "%.2f".format(it) } ?: "0.00"
+            Log.d("totalPrice", formattedPrice)
+            resultPrice.text = formattedPrice
+        }
+
+        cartViewModel.itemLiveData.observe(viewLifecycleOwner) { update ->
+            displayItem(update)
+
+        }
     }
+
 
     private fun showCart(cartItem: List<MenuListData>) {
         binding.recycleViewOnCart.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.recycleViewOnCart.adapter = ListCartAdapter(cartItem)
+        binding.recycleViewOnCart.adapter = ListCartAdapter(cartItem, viewModel = CartViewModel())
     }
 
+    private fun displayItem(cartItems: List<MenuListData>) {
+        adapter = ListCartAdapter(cartItems, cartViewModel)
+        binding.recycleViewOnCart.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = adapter
+        }
+
+    }
+
+
 }
+
+
+
