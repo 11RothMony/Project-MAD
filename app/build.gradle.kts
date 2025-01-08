@@ -86,6 +86,7 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-auth-ktx:23.1.0")
+    implementation("androidx.navigation:navigation-runtime-ktx:2.8.5")
 //    implementation("androidx.security:security-crypto-ktx:1.1.0-alpha06")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
