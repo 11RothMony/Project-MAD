@@ -42,7 +42,14 @@ class CartViewModel : ViewModel() {
         CartManager.deleteItemById(id)
         Log.d("DeleteItem", "${CartManager.getTotalPrice()}")
         loadItemCart() // Refresh the LiveData with updated cart items
+    }
 
+    fun pushItem(){
+        loadItemCart()
+    }
+
+    fun minusItem(){
+        loadItemCart()
     }
 
 

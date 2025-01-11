@@ -38,9 +38,7 @@ object CartManager {
 
     fun getTotalPrice(): Double = cartItems.sumOf { it.price * it.quantity }
 
-//    fun getTotalPrice(): Double {
-//        return cartItems.sumOf { it.price * it.quantity }
-//    }
+//    fun getTotalPrice(): Double = cartItems.sumOf { it.totalPrice * it.quantity }
 
 
 
