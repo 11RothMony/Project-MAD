@@ -83,10 +83,10 @@ class CartFragment : BaseFragment() {
         cartViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
             // Set up RecyclerView adapter
             recyclerViewOnCart.adapter = ListCartAdapter(cartViewModel.cartItem.value.orEmpty(), cartViewModel)
+
             binding.totalPriceInCart.text = formatPrice(price)
             Log.d("totalPrice", "${cartViewModel.totalPrice.value}")
         }
-
 
     }
 
