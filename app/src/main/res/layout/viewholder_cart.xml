@@ -5,7 +5,7 @@
     android:layout_height="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
-    android:background="@color/bg_white">
+    android:background="@drawable/bg_whitegray_circle">
 
     <androidx.cardview.widget.CardView
         android:layout_width="100dp"
