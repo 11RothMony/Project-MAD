@@ -1,6 +1,7 @@
 package kh.edu.rupp.ite.projectmad.data.model
 
 import android.util.Log
+import androidx.recyclerview.widget.DiffUtil
 
 
 object CartManager {
@@ -11,7 +12,8 @@ object CartManager {
         val existingProduct = cartItems.find { it.id == product.id }
 
         if (existingProduct != null) {
-            val updatedProduct = existingProduct.copy(quantity = existingProduct.quantity + product.quantity)
+            val updatedProduct =
+                existingProduct.copy(quantity = existingProduct.quantity + product.quantity)
             cartItems[cartItems.indexOf(existingProduct)] = updatedProduct
         } else {
             cartItems.add(product)
@@ -22,14 +24,11 @@ object CartManager {
 
     }
 
-    fun getCartItems(): List<MenuListData> = cartItems
+    fun getCartItems(): MutableList<MenuListData> = cartItems
 
-
-
-    fun clearCart()  {
+    fun clearCart() {
         Log.d("clear Cart", "yea it clear")
         cartItems.clear()
-
     }
 
     fun deleteItemById(id: Int) {
@@ -38,4 +37,11 @@ object CartManager {
     }
 
     fun getTotalPrice(): Double = cartItems.sumOf { it.price * it.quantity }
+
+//    fun getTotalPrice(): Double = cartItems.sumOf { it.totalPrice * it.quantity }
+
+
+
+
+
 }

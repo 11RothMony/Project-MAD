@@ -7,13 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.FragmentCartBinding
-import kh.edu.rupp.ite.projectmad.ui.element.adapter.kh.edu.rupp.ite.projectmad.ui.element.adapter.ListCartAdapter
+import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListCartAdapter
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartViewModel
 
 class CartFragment : BaseFragment() {
@@ -28,7 +29,6 @@ class CartFragment : BaseFragment() {
     private lateinit var resultPrice: TextView
     private lateinit var button: TextView
     private lateinit var adapter: ListCartAdapter
-//    private lateinit var deleteItem: ImageView
 
 
     override fun onCreateView(
@@ -40,6 +40,7 @@ class CartFragment : BaseFragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -49,18 +50,15 @@ class CartFragment : BaseFragment() {
         resultPrice = view.findViewById(R.id.totalPriceInCart)
         button = view.findViewById(R.id.button_clearCart)
 
-
-
         setupObserver()
         cartViewModel.loadItemCart()
-
 
         button.setOnClickListener {
             cartViewModel.clearCart()
         }
 
-
     }
+
 
     private fun setupObserver() {
         cartViewModel.cartItem.observe(viewLifecycleOwner) { data ->
@@ -78,23 +76,32 @@ class CartFragment : BaseFragment() {
             }
         }
 
-        cartViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
-            val formattedPrice = price?.let { "%.2f".format(it) } ?: "0.00"
-            Log.d("totalPrice", formattedPrice)
-            resultPrice.text = formattedPrice
-        }
-
         cartViewModel.itemLiveData.observe(viewLifecycleOwner) { update ->
             displayItem(update)
-
         }
+
+        cartViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
+            // Set up RecyclerView adapter
+            recyclerViewOnCart.adapter = ListCartAdapter(cartViewModel.cartItem.value.orEmpty(), cartViewModel)
+
+            binding.totalPriceInCart.text = formatPrice(price)
+            Log.d("totalPrice", "${cartViewModel.totalPrice.value}")
+        }
+
+    }
+
+    private fun formatPrice(price: Double?): String {
+        return "%.2f".format(price ?: 0.00)
     }
 
 
     private fun showCart(cartItem: List<MenuListData>) {
         binding.recycleViewOnCart.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.recycleViewOnCart.adapter = ListCartAdapter(cartItem, viewModel = CartViewModel())
+        binding.recycleViewOnCart.adapter = ListCartAdapter(
+            cartItem,
+            viewModel = CartViewModel()
+        )
     }
 
     private fun displayItem(cartItems: List<MenuListData>) {
@@ -103,9 +110,7 @@ class CartFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = adapter
         }
-
     }
-
 
 }
 

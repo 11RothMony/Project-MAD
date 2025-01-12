@@ -6,4 +6,5 @@
     <color name="blue">#00497E</color>
     <color name="solid_green">#347928</color>
     <color name="bg_white">#80D3D3D3</color>
+    <color name="red">	#FF0000</color>
 </resources>
