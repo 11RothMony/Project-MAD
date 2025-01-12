@@ -40,4 +40,8 @@
     <string name="join_us">Join Us!</string>
     <string name="my_order">My Order</string>
     <string name="apply_promo_coupons">Apply Promo Coupons</string>
+    <string name="special_instrutions">Special Instrutions</string>
+    <string name="select_payment_method">Select payment method</string>
+    <string name="dollar">$</string>
+    <string name="place_order">PLACE ORDER</string>
 </resources>

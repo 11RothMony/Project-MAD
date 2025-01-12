@@ -29,6 +29,7 @@ class CartFragment : BaseFragment() {
     private lateinit var resultPrice: TextView
     private lateinit var button: TextView
     private lateinit var adapter: ListCartAdapter
+    private lateinit var haveDataInCart : LinearLayout
 
 
     override fun onCreateView(
@@ -49,6 +50,7 @@ class CartFragment : BaseFragment() {
         viewLine = view.findViewById(R.id.viewLine)
         resultPrice = view.findViewById(R.id.totalPriceInCart)
         button = view.findViewById(R.id.button_clearCart)
+        haveDataInCart = view.findViewById(R.id.whenHaveData)
 
         setupObserver()
         cartViewModel.loadItemCart()
@@ -67,6 +69,7 @@ class CartFragment : BaseFragment() {
                 emptyCart.visibility = View.VISIBLE
                 recyclerViewOnCart.visibility = View.GONE
                 viewLine.visibility = View.GONE
+                haveDataInCart.visibility = View.GONE
             } else {
                 // Show cart items
                 showCart(data)
