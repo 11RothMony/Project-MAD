@@ -7,40 +7,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.ApiState
-import kh.edu.rupp.ite.projectmad.data.model.ProfileShow
 import kh.edu.rupp.ite.projectmad.data.model.ProfileUser
 import kh.edu.rupp.ite.projectmad.data.model.State
-//import kh.edu.rupp.ite.projectmad.data.model.UserProfile
-//import kh.edu.rupp.ite.projectmad.data.model.UserProfileResponse
 import kh.edu.rupp.ite.projectmad.databinding.FragmentAccountBinding
 import kh.edu.rupp.ite.projectmad.ui.element.activity.LoginActivity
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.ProfileViewModel
 
 class AccountFragment : BaseFragment() {
 
-
-
     private val viewModel by viewModels<ProfileViewModel>()
     private lateinit var binding: FragmentAccountBinding
 
-
     private lateinit var allProfileFragment: RelativeLayout
     private lateinit var loginButton: Button
-    private lateinit var signOutButton: Button
+    private lateinit var signOutButton: LinearLayout
+    private lateinit var lineaProfile: LinearLayout
 
     private lateinit var auth: FirebaseAuth
 
 //    val db = Firebase.
-
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +43,6 @@ class AccountFragment : BaseFragment() {
     ): View? {
         binding = FragmentAccountBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,6 +51,7 @@ class AccountFragment : BaseFragment() {
         allProfileFragment = view.findViewById(R.id.allProfileFragment)
         loginButton = view.findViewById(R.id.myButton)
         signOutButton = view.findViewById(R.id.btnSignOut)
+        lineaProfile = view.findViewById(R.id.linearProfile)
 
         auth = FirebaseAuth.getInstance()
 
@@ -112,10 +106,8 @@ class AccountFragment : BaseFragment() {
         binding.firstName.text = profile.profile.firstname
         binding.lastName.text = profile.profile.lastname
 
-
         Picasso.get().load(profile.profile.profileimage).into(binding.imageProfile)
         Picasso.get().load(profile.profile.coverimage).into(binding.coverImage)
-
     }
 
 
@@ -123,6 +115,7 @@ class AccountFragment : BaseFragment() {
         Toast.makeText(requireContext(), "Function executed!", Toast.LENGTH_SHORT).show()
 
         allProfileFragment.visibility = View.GONE
+//        lineaProfile.visibility = View.GONE
 
         loginButton.setOnClickListener {
             val intent = Intent(requireContext(), LoginActivity::class.java)

@@ -3,18 +3,13 @@ package kh.edu.rupp.ite.projectmad.ui.element.activity
 import HomeFragment
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
-import com.google.firebase.Firebase
 import com.google.firebase.FirebaseApp
-import com.google.firebase.database.database
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.databinding.ActivityMainBinding
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.AccountFragment
-import kh.edu.rupp.ite.projectmad.ui.element.fragment.BaseFragment
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.CartFragment
-import kh.edu.rupp.ite.projectmad.ui.element.fragment.FragmentMenu
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.OrderFragment
 
 import kh.edu.rupp.ite.visitme.ui.element.activity.BaseActivity
