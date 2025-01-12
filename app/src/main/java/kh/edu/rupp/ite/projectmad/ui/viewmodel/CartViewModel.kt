@@ -52,5 +52,4 @@ class CartViewModel : ViewModel() {
         loadItemCart()
     }
 
-
 }

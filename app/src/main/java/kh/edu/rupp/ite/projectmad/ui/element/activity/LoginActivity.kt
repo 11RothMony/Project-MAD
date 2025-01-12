@@ -9,15 +9,10 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.google.firebase.auth.FirebaseAuth
 import kh.edu.rupp.ite.projectmad.R
-import kh.edu.rupp.ite.projectmad.data.api.client.ApiClient
 import kh.edu.rupp.ite.projectmad.data.model.ApiState
 import kh.edu.rupp.ite.projectmad.data.model.LoginData
 import kh.edu.rupp.ite.projectmad.data.model.State
-//import kh.edu.rupp.ite.projectmad.global.AppEncryptedPref
-import kh.edu.rupp.ite.projectmad.global.AppPref
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.LogInViewModel
-
-
 import kh.edu.rupp.ite.visitme.ui.element.activity.BaseActivity
 
 class LoginActivity : BaseActivity() {
@@ -67,9 +62,6 @@ class LoginActivity : BaseActivity() {
 //            }
 //
 //    }
-
-
-
 
     private fun onLoginBtn(){
         val emailField = findViewById<EditText>(R.id.etEmail)
