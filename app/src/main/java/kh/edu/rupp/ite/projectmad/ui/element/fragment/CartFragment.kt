@@ -1,21 +1,28 @@
 package kh.edu.rupp.ite.projectmad.ui.element.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.FragmentCartBinding
 import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListCartAdapter
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartViewModel
+import kh.edu.rupp.ite.projectmad.ui.element.fragment.OrderFragment
 
 class CartFragment : BaseFragment() {
 
@@ -29,7 +36,11 @@ class CartFragment : BaseFragment() {
     private lateinit var resultPrice: TextView
     private lateinit var button: TextView
     private lateinit var adapter: ListCartAdapter
-    private lateinit var haveDataInCart : LinearLayout
+    private lateinit var haveDataInCart: LinearLayout
+    private lateinit var orderBtn: Button
+    private lateinit var currentFragment: Fragment
+    private val orderFragment = OrderFragment()
+    private lateinit var bottomNavigationView: BottomNavigationView
 
 
     override fun onCreateView(
@@ -51,12 +62,21 @@ class CartFragment : BaseFragment() {
         resultPrice = view.findViewById(R.id.totalPriceInCart)
         button = view.findViewById(R.id.button_clearCart)
         haveDataInCart = view.findViewById(R.id.whenHaveData)
+        orderBtn = view.findViewById(R.id.orderBtn)
+        bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+
 
         setupObserver()
         cartViewModel.loadItemCart()
 
         button.setOnClickListener {
             cartViewModel.clearCart()
+        }
+        orderBtn.setOnClickListener {
+            switchToCart()
+//            // Change Bottom Navigation to Order
+//            bottomNavigationView.selectedItemId = R.id.menuCart
+
         }
 
     }
@@ -85,7 +105,8 @@ class CartFragment : BaseFragment() {
 
         cartViewModel.totalPrice.observe(viewLifecycleOwner) { price ->
             // Set up RecyclerView adapter
-            recyclerViewOnCart.adapter = ListCartAdapter(cartViewModel.cartItem.value.orEmpty(), cartViewModel)
+            recyclerViewOnCart.adapter =
+                ListCartAdapter(cartViewModel.cartItem.value.orEmpty(), cartViewModel)
 
             binding.totalPriceInCart.text = formatPrice(price)
             Log.d("totalPrice", "${cartViewModel.totalPrice.value}")
@@ -114,6 +135,48 @@ class CartFragment : BaseFragment() {
             adapter = adapter
         }
     }
+
+    private fun switchToCart() {
+        val fragmentOrder = OrderFragment() // Create an instance of the fragment
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lyFragment, fragmentOrder) // Replace the current fragment
+            .addToBackStack("OrderFragment") // Optional: Add the transaction to the back stack
+            .commit()
+        bottomNavigationView.selectedItemId = R.id.menuOrders
+    }
+//    private fun switchToCart(fragment: Fragment) {
+//        val fragmentTransaction = parentFragmentManager.beginTransaction()
+//
+//        // If the fragment is already added, just show it
+//        if (fragment.isAdded) {
+//            fragmentTransaction.hide(currentFragment)
+//            fragmentTransaction.show(fragment)
+//        } else {
+//            // Remove the current fragment if any
+//            removeCurrentFragment()
+//
+//            // Add the new fragment
+//            fragmentTransaction.add(R.id.lyFragment, fragment)
+//        }
+//
+//        // Update the current fragment reference
+//        currentFragment = fragment
+//
+//        // Commit the transaction
+//        fragmentTransaction.commit()
+//        // Change Bottom Navigation to Order
+//        bottomNavigationView.selectedItemId = R.id.menuOrders
+//    }
+
+//    private fun removeCurrentFragment() {
+//        val currentFragment = parentFragmentManager.findFragmentById(R.id.lyFragment)
+//        if (currentFragment != null) {
+//            parentFragmentManager.beginTransaction()
+//                .remove(currentFragment)
+//                .commit()
+//        }
+//    }
+
 
 }
 
