@@ -38,8 +38,8 @@ class CartFragment : BaseFragment() {
     private lateinit var adapter: ListCartAdapter
     private lateinit var haveDataInCart: LinearLayout
     private lateinit var orderBtn: Button
-    private lateinit var currentFragment: Fragment
-    private val orderFragment = OrderFragment()
+//    private lateinit var currentFragment: Fragment
+//    private val orderFragment = OrderFragment()
     private lateinit var bottomNavigationView: BottomNavigationView
 
 
