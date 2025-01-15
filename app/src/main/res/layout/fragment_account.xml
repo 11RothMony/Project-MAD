@@ -10,19 +10,44 @@
         android:layout_width="match_parent"
         android:layout_height="350dp">
 
+<!--        <ImageView-->
+<!--            android:id="@+id/coverImage"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="250dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/ic_emptyimage_foreground" />-->
 
-        <ImageView
-            android:id="@+id/coverImage"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_emptyimage_foreground" />
+            android:layout_height="40dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/profile"
+                android:layout_marginHorizontal="10dp"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="40dp"
+                tools:ignore="RtlCompat" />
+            
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/linearOnProfile"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="150dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -30,8 +55,7 @@
                 android:id="@+id/cardView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginBottom="5dp"
+                android:gravity="center_horizontal"
                 app:cardCornerRadius="50dp">
 
                 <ImageView
@@ -94,104 +118,124 @@
         android:layout_width="match_parent"
         android:layout_height="380dp"
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="250dp"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="30dp"
-            tools:ignore="UseCompoundDrawables">
+            tools:ignore="UseCompoundDrawables"
+            android:background="@drawable/bg_whitegray_circle">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/baseline_shopping_bag_24" />
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_shopping_bag_24"
+                android:layout_marginStart="10dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/my_order"
                 android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_whitegray_circle"
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/baseline_link_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/join_us"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="30dp"
-            tools:ignore="UseCompoundDrawables">
+            tools:ignore="UseCompoundDrawables"
+            android:background="@drawable/bg_whitegray_circle">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/baseline_share_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/share_app"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/bg_whitegray_circle"
             tools:ignore="UseCompoundDrawables">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/baseline_settings_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/settings"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp">
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_whitegray_circle"
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/baseline_support_agent_24" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/support"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -199,14 +243,18 @@
         <LinearLayout
             android:id="@+id/btnSignOut"
             android:layout_width="100dp"
-            android:layout_height="20dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_whitegray_circle"
             tools:ignore="UseCompoundDrawables"
            >
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginEnd="10dp"
+                android:padding="3dp"
                 android:src="@drawable/baseline_logout_24" />
 
             <TextView
@@ -214,6 +262,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/signOut"
+                android:layout_gravity="center_vertical"
                 android:textColor="@color/red" />
 
         </LinearLayout>

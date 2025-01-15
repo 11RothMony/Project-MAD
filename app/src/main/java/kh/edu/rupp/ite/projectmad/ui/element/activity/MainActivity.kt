@@ -49,8 +49,6 @@ class MainActivity : BaseActivity() {
             fragmentTransaction.add(binding.lyFragment.id, orderFragment).hide(orderFragment)
             fragmentTransaction.add(binding.lyFragment.id, accountFragment).hide(accountFragment)
 
-
-
             fragmentTransaction.commit()
         }
     }
@@ -63,24 +61,23 @@ class MainActivity : BaseActivity() {
 
     private fun handleOnNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menuHome -> showFragement(homeFragment)
-            R.id.menuCart -> showFragement(cartFragement)
-            R.id.menuOrders -> showFragement(orderFragment)
-            R.id.menuAccount -> showFragement(accountFragment)
-
-
+            R.id.menuHome -> showFragment(homeFragment)
+            R.id.menuCart -> showFragment(cartFragement)
+            R.id.menuOrders -> showFragment(orderFragment)
+            R.id.menuAccount -> showFragment(accountFragment)
         }
         return true
     }
 
-    private fun showFragement(fragment: Fragment) {
+    private fun showFragment(fragment: Fragment) {
         if (activeFragment == fragment) return
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
 
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
         if (!fragment.isAdded) {
             // Add the fragment if it's not already added
             removeCurrentFragment()
-            fragmentTransaction.add(R.id.lyFragment, fragment)
+            fragmentTransaction.replace(R.id.lyFragment, fragment)
+
         }
         // Hide the currently active fragment
         fragmentTransaction.hide(activeFragment)
@@ -93,6 +90,7 @@ class MainActivity : BaseActivity() {
 
         fragmentTransaction.commit()
     }
+
 
     private fun removeCurrentFragment() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.lyFragment)

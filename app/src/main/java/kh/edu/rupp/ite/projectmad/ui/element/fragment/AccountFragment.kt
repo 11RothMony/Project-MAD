@@ -107,21 +107,19 @@ class AccountFragment : BaseFragment() {
         binding.lastName.text = profile.profile.lastname
 
         Picasso.get().load(profile.profile.profileimage).into(binding.imageProfile)
-        Picasso.get().load(profile.profile.coverimage).into(binding.coverImage)
+//        Picasso.get().load(profile.profile.coverimage).into(binding.coverImage)
     }
-
 
     private fun showButtonLogin() {
         Toast.makeText(requireContext(), "Function executed!", Toast.LENGTH_SHORT).show()
 
         allProfileFragment.visibility = View.GONE
-//        lineaProfile.visibility = View.GONE
+        lineaProfile.visibility = View.GONE
 
         loginButton.setOnClickListener {
             val intent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(intent)
         }
-
     }
 
     private fun showButtonSignOut() {
