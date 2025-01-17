@@ -43,7 +43,7 @@
     <string name="special_instrutions">Special Instrutions</string>
     <string name="select_payment_method">Select payment method</string>
     <string name="dollar">$</string>
-    <string name="place_order">PLACE ORDER</string>
+    <string name="confirm_order">CONFIRM ORDER</string>
     <string name="profile">Profile</string>
     <string name="order">Order</string>
     <string name="track_order">Track Order</string>

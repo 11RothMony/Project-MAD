@@ -22,16 +22,17 @@ class CartViewModel : ViewModel() {
     val itemLiveData get() = _itemsLiveData
 
 
-    fun loadItemCart(){
+
+
+    fun loadItemCart() {
         _cartItems.value = CartManager.getCartItems()
         _totalPrice.value = CartManager.getTotalPrice()
-        Log.d("totalPrice1", "${_totalPrice.value}")
-        Log.d("totalPrice2", "${totalPrice.value}")
     }
 
     init {
         loadItemCart()
     }
+
 
     fun clearCart() {
         CartManager.clearCart()
@@ -44,12 +45,13 @@ class CartViewModel : ViewModel() {
         loadItemCart() // Refresh the LiveData with updated cart items
     }
 
-    fun pushItem(){
+    fun pushItem() {
         loadItemCart()
     }
 
-    fun minusItem(){
+    fun minusItem() {
         loadItemCart()
     }
+
 
 }
