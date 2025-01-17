@@ -18,15 +18,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kh.edu.rupp.ite.projectmad.R
+import kh.edu.rupp.ite.projectmad.data.model.CartItem
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.FragmentCartBinding
 import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListCartAdapter
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartViewModel
 import kh.edu.rupp.ite.projectmad.ui.element.fragment.OrderFragment
+import kh.edu.rupp.ite.projectmad.ui.viewmodel.OrderViewModel
 
 class CartFragment : BaseFragment() {
 
     private val cartViewModel by viewModels<CartViewModel>()
+    private val orderViewModel by viewModels<OrderViewModel>()
+
 
     private lateinit var binding: FragmentCartBinding
 
@@ -38,8 +42,6 @@ class CartFragment : BaseFragment() {
     private lateinit var adapter: ListCartAdapter
     private lateinit var haveDataInCart: LinearLayout
     private lateinit var orderBtn: Button
-//    private lateinit var currentFragment: Fragment
-//    private val orderFragment = OrderFragment()
     private lateinit var bottomNavigationView: BottomNavigationView
 
 
@@ -72,11 +74,10 @@ class CartFragment : BaseFragment() {
         button.setOnClickListener {
             cartViewModel.clearCart()
         }
-        orderBtn.setOnClickListener {
-            switchToCart()
-//            // Change Bottom Navigation to Order
-//            bottomNavigationView.selectedItemId = R.id.menuCart
 
+        orderBtn.setOnClickListener{
+            orderViewModel.confirmProducts()
+            switchToCart()
         }
 
     }
@@ -137,6 +138,7 @@ class CartFragment : BaseFragment() {
     }
 
     private fun switchToCart() {
+
         val fragmentOrder = OrderFragment() // Create an instance of the fragment
         parentFragmentManager.beginTransaction()
             .replace(R.id.lyFragment, fragmentOrder) // Replace the current fragment
