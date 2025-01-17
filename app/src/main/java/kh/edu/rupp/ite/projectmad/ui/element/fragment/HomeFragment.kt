@@ -145,7 +145,7 @@ class HomeFragment : BaseFragment() {
     private fun displayNewProduct(product: List<NewProductData>) {
         Log.d("displayMenu", "$product")
         binding.recycleviewOnNewproduct.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+            LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recycleviewOnNewproduct.adapter = ListNewProductAdapter(product)
     }
 
