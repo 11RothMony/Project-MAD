@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kotlinx.coroutines.launch
@@ -21,7 +20,11 @@ class CartViewModel : ViewModel() {
     private val _itemsLiveData = MutableLiveData<MutableList<MenuListData>>()
     val itemLiveData get() = _itemsLiveData
 
+    private var _confirmedProducts = MutableLiveData<List<MenuListData>>()
+    val confirmedProducts: LiveData<List<MenuListData>> get() = _confirmedProducts
 
+    private val _buttonClicked = MutableLiveData<List<MenuListData>>()
+    private val buttonClicked: LiveData<List<MenuListData>> get() = _buttonClicked
 
 
     fun loadItemCart() {
@@ -32,7 +35,6 @@ class CartViewModel : ViewModel() {
     init {
         loadItemCart()
     }
-
 
     fun clearCart() {
         CartManager.clearCart()
@@ -53,5 +55,15 @@ class CartViewModel : ViewModel() {
         loadItemCart()
     }
 
+    fun onButtonClicked() {
+        val currentCartItems = _cartItems.value ?: emptyList()
+        _buttonClicked.value = currentCartItems
+    }
+
+    fun confirmProducts() {
+        val selectedItems = buttonClicked.value ?: emptyList()
+        _confirmedProducts.value = selectedItems
+        Log.d("ConfirmItem", "Confirmed Products: $selectedItems")
+    }
 
 }

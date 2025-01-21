@@ -52,8 +52,15 @@ class FragmentMenu : BaseFragment() {
         button.setOnClickListener {
             switchToHome()
         }
+//        onPause()
 
     }
+
+//    override fun onPause() {
+//        super.onPause()
+//        // Revert system UI visibility back to normal when the fragment is paused
+//        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+//    }
 
 
     private fun setupObserver() {

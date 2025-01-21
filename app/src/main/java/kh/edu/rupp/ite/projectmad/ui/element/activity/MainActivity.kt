@@ -3,6 +3,7 @@ package kh.edu.rupp.ite.projectmad.ui.element.activity
 import HomeFragment
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.fragment.app.Fragment
 import com.google.firebase.FirebaseApp
@@ -24,13 +25,9 @@ class MainActivity : BaseActivity() {
 
     private lateinit var activeFragment: Fragment
 
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setupFragment()

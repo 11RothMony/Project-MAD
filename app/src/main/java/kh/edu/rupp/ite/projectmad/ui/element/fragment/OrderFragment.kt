@@ -6,25 +6,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.view.isGone
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.FragmentOrderBinding
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartViewModel
-import kh.edu.rupp.ite.projectmad.ui.viewmodel.OrderViewModel
 
 
 class OrderFragment : BaseFragment() {
     private lateinit var binding: FragmentOrderBinding
-    private val orderViewModel  by viewModels<OrderViewModel>()
+    private val orderViewModel by viewModels<CartViewModel>()
 
     private lateinit var btnArrowUp: ImageView
     private lateinit var btnArrowDown: ImageView
     private lateinit var trackOrder: LinearLayout
+    private lateinit var lineVertical: View
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,17 +42,15 @@ class OrderFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        orderViewModel.confirmProducts()
-
         btnArrowUp = view.findViewById(R.id.arrowUp)
         btnArrowDown = view.findViewById(R.id.arrowDown)
         trackOrder = view.findViewById(R.id.trackOrder)
+        lineVertical = view.findViewById(R.id.LineVertical)
 
         btnArrowDown.visibility = View.GONE
         trackOrder.visibility = View.VISIBLE
         btnArrowUp.visibility = View.VISIBLE
-
-//        Log.d("setUiOnOrder", "${orderViewModel.confirmedProducts.value}")
+        lineVertical.visibility = View.VISIBLE
 
         btnArrowDown.setOnClickListener {
             arrowDown()
@@ -61,12 +61,18 @@ class OrderFragment : BaseFragment() {
         }
 
         setupUi()
-//        orderViewModel.log()
+        onPause()
+    }
+    override fun onPause() {
+        super.onPause()
+        // Revert system UI visibility back to normal when the fragment is paused
+        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
     }
 
     private fun setupUi() {
         Log.d("setUiOrder", "${orderViewModel.confirmedProducts.value}")
-        orderViewModel.confirmedProducts.observe(viewLifecycleOwner) { data ->
+        orderViewModel.confirmProducts()
+        orderViewModel.confirmedProducts.observe(requireActivity()) { data ->
             if (data != null && data.isNotEmpty()) {
                 displayItems(data)
                 Log.d("setUiOnOrder", "$data")
@@ -80,12 +86,14 @@ class OrderFragment : BaseFragment() {
         btnArrowUp.visibility = View.VISIBLE
         btnArrowDown.visibility = View.GONE
         trackOrder.visibility = View.VISIBLE
+        lineVertical.visibility = View.VISIBLE
     }
 
     private fun arrowUp() {
         btnArrowDown.visibility = View.VISIBLE
         btnArrowUp.visibility = View.GONE
         trackOrder.visibility = View.GONE
+        lineVertical.visibility = View.GONE
     }
 
     private fun displayItems(menu: List<MenuListData>) {
