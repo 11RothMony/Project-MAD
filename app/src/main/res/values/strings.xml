@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Food Delivery</string>
+    <string name="app_name">Nham</string>
     <string name="login_your_account">Login Your Account</string>
     <string name="enter_registered_email_or_phone_number_and_password_to_login_your_account">Enter registered email or phone number and password to login your account</string>
     <string name="your_phone_number">Your Email</string>
@@ -48,4 +48,5 @@
     <string name="order">Order</string>
     <string name="track_order">Track Order</string>
     <string name="phnom_penh">Phnom Penh</string>
+    <string name="search">Search</string>
 </resources>
