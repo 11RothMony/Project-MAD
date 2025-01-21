@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="20dp"
     android:layout_height="match_parent">
 
 
@@ -72,7 +73,8 @@
             android:layout_height="220dp">
 
             <View
-                android:layout_width="5dp"
+                android:id="@+id/LineVertical"
+                android:layout_width="3dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_whitegray_circle_gray" />
 
@@ -88,7 +90,7 @@
                     android:orientation="horizontal">
 
                     <View
-                        android:layout_width="4dp"
+                        android:layout_width="3dp"
                         android:layout_height="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_gravity="center_vertical"
@@ -145,7 +147,7 @@
                         android:orientation="horizontal">
 
                         <View
-                            android:layout_width="4dp"
+                            android:layout_width="3dp"
                             android:layout_height="10dp"
                             android:layout_marginEnd="10dp"
                             android:background="@color/red" />
@@ -194,7 +196,7 @@
                         android:orientation="horizontal">
 
                         <View
-                            android:layout_width="4dp"
+                            android:layout_width="3dp"
                             android:layout_height="10dp"
                             android:layout_marginEnd="10dp"
                             android:background="@color/red" />
@@ -243,7 +245,7 @@
                         android:orientation="horizontal">
 
                         <View
-                            android:layout_width="4dp"
+                            android:layout_width="3dp"
                             android:layout_height="10dp"
                             android:layout_marginEnd="10dp"
                             android:background="@color/red" />

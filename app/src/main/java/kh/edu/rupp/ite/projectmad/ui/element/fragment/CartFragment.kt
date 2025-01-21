@@ -1,36 +1,27 @@
 package kh.edu.rupp.ite.projectmad.ui.element.fragment
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kh.edu.rupp.ite.projectmad.R
-import kh.edu.rupp.ite.projectmad.data.model.CartItem
+import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.FragmentCartBinding
 import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListCartAdapter
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartViewModel
-import kh.edu.rupp.ite.projectmad.ui.element.fragment.OrderFragment
-import kh.edu.rupp.ite.projectmad.ui.viewmodel.OrderViewModel
 
 class CartFragment : BaseFragment() {
 
     private val cartViewModel by viewModels<CartViewModel>()
-    private val orderViewModel by viewModels<OrderViewModel>()
-
 
     private lateinit var binding: FragmentCartBinding
 
@@ -75,12 +66,18 @@ class CartFragment : BaseFragment() {
             cartViewModel.clearCart()
         }
 
-        orderBtn.setOnClickListener{
-            orderViewModel.confirmProducts()
+        orderBtn.setOnClickListener {
+            cartViewModel.onButtonClicked()
             switchToCart()
         }
+//        onPause()
 
     }
+//    override fun onPause() {
+//        super.onPause()
+//        // Revert system UI visibility back to normal when the fragment is paused
+//        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
+//    }
 
 
     private fun setupObserver() {
@@ -119,7 +116,6 @@ class CartFragment : BaseFragment() {
         return "%.2f".format(price ?: 0.00)
     }
 
-
     private fun showCart(cartItem: List<MenuListData>) {
         binding.recycleViewOnCart.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -139,11 +135,11 @@ class CartFragment : BaseFragment() {
 
     private fun switchToCart() {
 
-        val fragmentOrder = OrderFragment() // Create an instance of the fragment
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.lyFragment, fragmentOrder) // Replace the current fragment
-            .addToBackStack("OrderFragment") // Optional: Add the transaction to the back stack
-            .commit()
+//        val fragmentOrder = OrderFragment() // Create an instance of the fragment
+//        parentFragmentManager.beginTransaction()
+//            .replace(R.id.lyFragment, fragmentOrder) // Replace the current fragment
+//            .addToBackStack("OrderFragment") // Optional: Add the transaction to the back stack
+//            .commit()
         bottomNavigationView.selectedItemId = R.id.menuOrders
     }
 //    private fun switchToCart(fragment: Fragment) {

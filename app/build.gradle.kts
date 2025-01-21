@@ -23,22 +23,21 @@ android {
         buildConfig = true
     }
 
-
-    flavorDimensions += "FoodDelivery"
+    flavorDimensions += "Nham"
     productFlavors {
         create("dev") {
-            dimension = "FoodDelivery"
+            dimension = "Nham"
             applicationId = "kh.edu.rupp.ite.projectmad.dev"
-            resValue("string", "app_name", "Food Delivery Test")
+            resValue("string", "app_name", "Nham Test")
 //            buildConfigField("String", "apiBaseUrl", "\"http://10.0.2.2:3000/testing/\"")
             buildConfigField("String", "apiBaseUrl", "\"http://10.0.2.2:5007/profileauth-a05fd/us-central1/api/\"")
 //            buildConfigField("String", "apiBaseUrl", "\"http://127.0.0.1:5007/profileauth-a05fd/us-central1/api/\"")
 
         }
         create("prd") {
-            dimension = "FoodDelivery"
+            dimension = "Nham"
             applicationId = "kh.edu.rupp.ite.projectmad"
-            resValue("string", "app_name", "Food Delivery Test")
+            resValue("string", "app_name", "Nham")
             buildConfigField("String", "apiBaseUrl", "\"https://dummyjson.com/c/\"")
         }
     }
@@ -48,11 +47,10 @@ android {
             storeFile =
                 file("D:\\Royal University of Phnom Penh\\Year_4 _Semester_1\\Mobile Applicattion Development  FoodDelivery.jks")
             storePassword = "123456"
-            keyAlias = "FoodDelivery"
+            keyAlias = "Nham"
             keyPassword = "123456"
         }
     }
-
 
 
     buildTypes {
@@ -101,6 +99,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
+    implementation("androidx.core:core-splashscreen:1.0.1")
 
 
     // Import the BoM for the Firebase platform
