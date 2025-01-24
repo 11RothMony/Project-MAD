@@ -23,7 +23,6 @@ class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHo
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val menu = data[position]
         holder.bind(menu)
-
     }
 
 }

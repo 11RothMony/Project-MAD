@@ -67,7 +67,7 @@ class CartFragment : BaseFragment() {
         }
 
         orderBtn.setOnClickListener {
-            cartViewModel.onButtonClicked()
+//            cartViewModel.onButtonClicked()
             switchToCart()
         }
 //        onPause()

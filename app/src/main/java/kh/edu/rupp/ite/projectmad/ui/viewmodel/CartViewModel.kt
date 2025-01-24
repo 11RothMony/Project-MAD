@@ -55,15 +55,15 @@ class CartViewModel : ViewModel() {
         loadItemCart()
     }
 
-    fun onButtonClicked() {
-        val currentCartItems = _cartItems.value ?: emptyList()
-        _buttonClicked.value = currentCartItems
-    }
+//    fun onButtonClicked() {
+//        val currentCartItems = _cartItems.value ?: emptyList()
+//        _buttonClicked.value = currentCartItems
+//    }
 
     fun confirmProducts() {
-        val selectedItems = buttonClicked.value ?: emptyList()
-        _confirmedProducts.value = selectedItems
-        Log.d("ConfirmItem", "Confirmed Products: $selectedItems")
+//        val selectedItems = buttonClicked.value ?: emptyList()
+        _confirmedProducts.value = _cartItems.value
+//        Log.d("ConfirmItem", "Confirmed Products: $selectedItems")
     }
 
 }

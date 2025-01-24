@@ -7,10 +7,10 @@
 
     <style name="Theme.ProjectMAD" parent="Base.Theme.ProjectMAD" />
 
-    <style name="splashScreenThem" parent="Theme.MaterialComponents.Light.NoActionBar">
-<!--        <item name="android:windowBackground">@drawable/splash_background</item>-->
-<!--       <item name="android:windowSplashScreenBackground">@color/solid_green</item>-->
-<!--        <item name="android:statusBarColor">@color/solid_green</item>-->
-    </style>
+<!--    <style name="splashScreenThem" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+<!--&lt;!&ndash;        <item name="android:windowBackground">@drawable/splash_background</item>&ndash;&gt;-->
+<!--&lt;!&ndash;       <item name="android:windowSplashScreenBackground">@color/solid_green</item>&ndash;&gt;-->
+<!--&lt;!&ndash;        <item name="android:statusBarColor">@color/solid_green</item>&ndash;&gt;-->
+<!--    </style>-->
 
 </resources>

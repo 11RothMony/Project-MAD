@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.AppCompat" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@mipmap/ic_launcher</item>
+    <!--    <style name="Theme.AppCompat" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <!--        <item name="android:windowBackground">@mipmap/ic_launcher</item>-->
+    <!--    </style>-->
+
+    <style name="splashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
+
+
 </resources>
