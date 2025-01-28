@@ -1,5 +1,5 @@
-import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -13,7 +13,7 @@ class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHo
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewholderMenuBinding.inflate(layoutInflater, parent, false)
-        return MenuViewHolder(binding)
+        return MenuViewHolder(binding )
     }
 
     override fun getItemCount(): Int {
@@ -27,29 +27,43 @@ class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHo
 
 }
 
-class MenuViewHolder(private val binding: ViewholderMenuBinding) : ViewHolder(binding.root) {
+class MenuViewHolder(private val binding: ViewholderMenuBinding,
+) : ViewHolder(binding.root ) {
+
 
     fun bind(menu: MenuListData) {
-        Log.d("bind", "$menu")
+
         binding.name.text = menu.name
         binding.size.text = menu.size
         binding.price.text = menu.price.toString()
         binding.vergetatial.text = menu.isVegetarian.toString()
+        binding.numberOfProduct.text = menu.quantity.toString()
         Picasso.get()
             .load(menu.image)
             .into(binding.image)
 
-        binding.addButton.setOnClickListener {
-//            addData(menu)
-            CartManager.addToCart(menu)
+        binding.countInmenu.visibility = View.GONE
 
+        binding.addButton.setOnClickListener {
+            CartManager.addToCart(menu)
+            binding.addButton.visibility = View.GONE
+            binding.countInmenu.visibility = View.VISIBLE
         }
 
+        binding.minus.setOnClickListener{
+            if(menu.quantity > 1) {
+                menu.quantity -= 1
+                binding.numberOfProduct.text = menu.quantity.toString()
+            }else{
+                binding.countInmenu.visibility = View.GONE
+                binding.addButton.visibility = View.VISIBLE
+                CartManager.deleteItemById(menu.id)
+
+            }
+        }
+        binding.plus.setOnClickListener{
+            menu.quantity += 1
+            binding.numberOfProduct.text = menu.quantity.toString()
+        }
     }
 }
-
-//fun addData(menu: MenuListData) {
-//    val mutableList: MutableList<MenuListData> = arrayListOf()
-//    mutableList.add(menu)
-//    Log.d("ArrayList", "Updated List: ${mutableList.joinToString { it.name }}")
-//}

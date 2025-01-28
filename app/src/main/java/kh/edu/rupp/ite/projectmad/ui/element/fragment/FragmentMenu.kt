@@ -3,31 +3,29 @@ package kh.edu.rupp.ite.projectmad.ui.element.fragment
 import HomeFragment
 import ListMenuAdaptor
 import ListMenuViewModel
-import android.icu.text.Transliterator.Position
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.ApiState
+import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.State
 import kh.edu.rupp.ite.projectmad.databinding.FragmentMenuBinding
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
-
 
 
 class FragmentMenu : BaseFragment() {
 
     private val viewModel by viewModels<ListMenuViewModel>()
 
-
     private lateinit var binding: FragmentMenuBinding
-
+//    private lateinit  var btnAdd : Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,9 +40,7 @@ class FragmentMenu : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val button = view.findViewById<ImageView>(R.id.arrowback)
-        val buttonAdd: RecyclerView = view.findViewById(R.id.recycleview)
-
-
+//        btnAdd = view.findViewById(R.id.addButton)
 
         setupObserver()
         viewModel.loadMenu()
@@ -52,21 +48,14 @@ class FragmentMenu : BaseFragment() {
         button.setOnClickListener {
             switchToHome()
         }
-//        onPause()
 
     }
-
-//    override fun onPause() {
-//        super.onPause()
-//        // Revert system UI visibility back to normal when the fragment is paused
-//        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-//    }
-
 
     private fun setupObserver() {
         viewModel.menuListData.observe(viewLifecycleOwner) {
             handleState(it)
         }
+
     }
 
     private fun handleState(state: ApiState<List<MenuListData>>) {
@@ -92,6 +81,9 @@ class FragmentMenu : BaseFragment() {
         binding.recycleview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         binding.recycleview.adapter = ListMenuAdaptor(menu)
+//        if (){
+//            btnAdd.visibility = View.GONE
+//        }
     }
 
     private fun switchToHome() {
@@ -101,6 +93,7 @@ class FragmentMenu : BaseFragment() {
             .addToBackStack("HomeFragment") // Optional: Add the transaction to the back stack
             .commit()
     }
+
 
 }
 

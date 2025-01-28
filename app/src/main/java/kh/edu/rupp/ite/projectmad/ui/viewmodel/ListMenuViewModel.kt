@@ -1,4 +1,5 @@
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,11 +16,14 @@ class ListMenuViewModel : ViewModel() {
     private val _menuListData = MutableLiveData<ApiState<List<MenuListData>>>()
     val menuListData get() = _menuListData
 
+    private val _btn = MutableLiveData<Boolean>()
+    val btn: MutableLiveData<Boolean> get() = _btn
 
     fun loadMenu() {
 
         var apiState = ApiState.loading<List<MenuListData>>()
         _menuListData.postValue(apiState)
+
 
         viewModelScope.launch {
 
