@@ -8,24 +8,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import kh.edu.rupp.ite.projectmad.R
 import kh.edu.rupp.ite.projectmad.data.model.ApiState
-import kh.edu.rupp.ite.projectmad.data.model.CartManager
+import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.data.model.State
 import kh.edu.rupp.ite.projectmad.databinding.FragmentMenuBinding
-import kh.edu.rupp.ite.projectmad.data.model.MenuListData
+import kh.edu.rupp.ite.projectmad.ui.element.activity.MainActivity
+import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartInNavigationBarViewModel
 
 
 class FragmentMenu : BaseFragment() {
 
     private val viewModel by viewModels<ListMenuViewModel>()
+    private val viewModelInCart by viewModels<CartInNavigationBarViewModel>()
 
     private lateinit var binding: FragmentMenuBinding
-//    private lateinit  var btnAdd : Button
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,7 +40,6 @@ class FragmentMenu : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val button = view.findViewById<ImageView>(R.id.arrowback)
-//        btnAdd = view.findViewById(R.id.addButton)
 
         setupObserver()
         viewModel.loadMenu()
@@ -48,7 +47,10 @@ class FragmentMenu : BaseFragment() {
         button.setOnClickListener {
             switchToHome()
         }
-
+        viewModelInCart.totalQuantity.observe(viewLifecycleOwner){ quantity ->
+            Log.d("FragmentInMenu", "${viewModelInCart.totalQuantity.value}")
+            (requireActivity() as MainActivity).updateCartBadge(quantity)
+        }
     }
 
     private fun setupObserver() {
@@ -80,10 +82,7 @@ class FragmentMenu : BaseFragment() {
         Log.d("displayMenu", "$menu")
         binding.recycleview.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.recycleview.adapter = ListMenuAdaptor(menu)
-//        if (){
-//            btnAdd.visibility = View.GONE
-//        }
+        binding.recycleview.adapter = ListMenuAdaptor(menu, viewModelInCart)
     }
 
     private fun switchToHome() {

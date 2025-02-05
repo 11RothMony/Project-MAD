@@ -70,14 +70,8 @@ class CartFragment : BaseFragment() {
 //            cartViewModel.onButtonClicked()
             switchToCart()
         }
-//        onPause()
-
     }
-//    override fun onPause() {
-//        super.onPause()
-//        // Revert system UI visibility back to normal when the fragment is paused
-//        requireActivity().window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_VISIBLE
-//    }
+
 
 
     private fun setupObserver() {
@@ -134,48 +128,8 @@ class CartFragment : BaseFragment() {
     }
 
     private fun switchToCart() {
-
-//        val fragmentOrder = OrderFragment() // Create an instance of the fragment
-//        parentFragmentManager.beginTransaction()
-//            .replace(R.id.lyFragment, fragmentOrder) // Replace the current fragment
-//            .addToBackStack("OrderFragment") // Optional: Add the transaction to the back stack
-//            .commit()
         bottomNavigationView.selectedItemId = R.id.menuOrders
     }
-//    private fun switchToCart(fragment: Fragment) {
-//        val fragmentTransaction = parentFragmentManager.beginTransaction()
-//
-//        // If the fragment is already added, just show it
-//        if (fragment.isAdded) {
-//            fragmentTransaction.hide(currentFragment)
-//            fragmentTransaction.show(fragment)
-//        } else {
-//            // Remove the current fragment if any
-//            removeCurrentFragment()
-//
-//            // Add the new fragment
-//            fragmentTransaction.add(R.id.lyFragment, fragment)
-//        }
-//
-//        // Update the current fragment reference
-//        currentFragment = fragment
-//
-//        // Commit the transaction
-//        fragmentTransaction.commit()
-//        // Change Bottom Navigation to Order
-//        bottomNavigationView.selectedItemId = R.id.menuOrders
-//    }
-
-//    private fun removeCurrentFragment() {
-//        val currentFragment = parentFragmentManager.findFragmentById(R.id.lyFragment)
-//        if (currentFragment != null) {
-//            parentFragmentManager.beginTransaction()
-//                .remove(currentFragment)
-//                .commit()
-//        }
-//    }
-
-
 }
 
 

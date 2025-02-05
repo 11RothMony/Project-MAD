@@ -7,13 +7,15 @@ import com.squareup.picasso.Picasso
 import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kh.edu.rupp.ite.projectmad.databinding.ViewholderMenuBinding
+import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartInNavigationBarViewModel
 
-class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHolder>() {
+class ListMenuAdaptor(private val data: List<MenuListData>, private val viewModel: CartInNavigationBarViewModel) : Adapter<MenuViewHolder>() {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ViewholderMenuBinding.inflate(layoutInflater, parent, false)
-        return MenuViewHolder(binding )
+        return MenuViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -22,16 +24,16 @@ class ListMenuAdaptor(private val data: List<MenuListData>) : Adapter<MenuViewHo
 
     override fun onBindViewHolder(holder: MenuViewHolder, position: Int) {
         val menu = data[position]
-        holder.bind(menu)
+        holder.bind(menu, viewModel)
     }
 
 }
 
-class MenuViewHolder(private val binding: ViewholderMenuBinding,
+class MenuViewHolder(private val binding: ViewholderMenuBinding
 ) : ViewHolder(binding.root ) {
 
 
-    fun bind(menu: MenuListData) {
+    fun bind(menu: MenuListData, viewModel: CartInNavigationBarViewModel) {
 
         binding.name.text = menu.name
         binding.size.text = menu.size
@@ -48,9 +50,12 @@ class MenuViewHolder(private val binding: ViewholderMenuBinding,
             CartManager.addToCart(menu)
             binding.addButton.visibility = View.GONE
             binding.countInmenu.visibility = View.VISIBLE
+//            viewModel.addItemToCart()
+            viewModel.totalQuantity()
         }
 
         binding.minus.setOnClickListener{
+            viewModel.minusItemToCart()
             if(menu.quantity > 1) {
                 menu.quantity -= 1
                 binding.numberOfProduct.text = menu.quantity.toString()
@@ -64,6 +69,9 @@ class MenuViewHolder(private val binding: ViewholderMenuBinding,
         binding.plus.setOnClickListener{
             menu.quantity += 1
             binding.numberOfProduct.text = menu.quantity.toString()
+//            viewModel.addItemToCart()
+            viewModel.totalQuantity()
         }
+
     }
 }

@@ -1,16 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ProjectMAD" parent="Theme.AppCompat.Light.NoActionBar">
+<!--    <style name="Base.Theme.ProjectMAD" parent="Theme.AppCompat.Light.NoActionBar">-->
+<!--    <style name="Base.Theme.ProjectMAD" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
+    <style name="Base.Theme.ProjectMAD" parent="Theme.Material3.DayNight">
+
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/solid_green</item>
     </style>
-
-    <style name="Theme.ProjectMAD" parent="Base.Theme.ProjectMAD" />
-
-<!--    <style name="splashScreenThem" parent="Theme.MaterialComponents.Light.NoActionBar">-->
-<!--&lt;!&ndash;        <item name="android:windowBackground">@drawable/splash_background</item>&ndash;&gt;-->
-<!--&lt;!&ndash;       <item name="android:windowSplashScreenBackground">@color/solid_green</item>&ndash;&gt;-->
-<!--&lt;!&ndash;        <item name="android:statusBarColor">@color/solid_green</item>&ndash;&gt;-->
-<!--    </style>-->
 
 </resources>

@@ -1,9 +1,11 @@
 package kh.edu.rupp.ite.projectmad.ui.viewmodel
 
+import android.service.autofill.Transformation
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.switchMap
 import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kotlinx.coroutines.launch
@@ -22,10 +24,6 @@ class CartViewModel : ViewModel() {
 
     private var _confirmedProducts = MutableLiveData<List<MenuListData>>()
     val confirmedProducts: LiveData<List<MenuListData>> get() = _confirmedProducts
-
-    private val _buttonClicked = MutableLiveData<List<MenuListData>>()
-    private val buttonClicked: LiveData<List<MenuListData>> get() = _buttonClicked
-
 
     fun loadItemCart() {
         _cartItems.value = CartManager.getCartItems()

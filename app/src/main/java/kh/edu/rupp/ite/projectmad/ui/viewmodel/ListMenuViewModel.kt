@@ -16,8 +16,7 @@ class ListMenuViewModel : ViewModel() {
     private val _menuListData = MutableLiveData<ApiState<List<MenuListData>>>()
     val menuListData get() = _menuListData
 
-    private val _btn = MutableLiveData<Boolean>()
-    val btn: MutableLiveData<Boolean> get() = _btn
+
 
     fun loadMenu() {
 

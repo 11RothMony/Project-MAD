@@ -89,28 +89,6 @@ class CartViewHolder(
         binding.totalPrice.text = menu.totalPrice.toString()
         binding.numberOfProduct.text = menu.quantity.toString()
 
-//            binding.plus.setOnClickListener {
-//                menu.quantity +=1
-//
-//                // Update the UI
-//                binding.count.text = menu.quantity.toString()
-//                binding.numberOfProduct.text = menu.quantity.toString()
-//                binding.totalPrice.text = (menu.price * menu.quantity).toString()
-//            }
-//        binding.minus.setOnClickListener {
-//            if (menu.quantity > 1) {
-//                menu.quantity -= 1
-//                // Update the UI
-//                binding.count.text = menu.quantity.toString()
-//                binding.numberOfProduct.text = menu.quantity.toString()
-//                binding.totalPrice.text = (menu.price * menu.quantity).toString()
-//            } else {
-//                Toast.makeText(binding.root.context, "Minimum quantity is 1!", Toast.LENGTH_SHORT)
-//                    .show()
-//            }
-//        }
-
-
         Picasso.get()
             .load(menu.image)
             .into(binding.imageInCart)

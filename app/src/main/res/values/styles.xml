@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--    <style name="Theme.AppCompat" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
-    <!--        <item name="android:windowBackground">@mipmap/ic_launcher</item>-->
-    <!--    </style>-->
+    <style name="GreenButton" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/bg_button_green</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 
     <style name="splashScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/splash_background</item>

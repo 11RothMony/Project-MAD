@@ -33,11 +33,6 @@
             android:name=".ui.element.activity.LoginActivity"
             android:exported="true">
         </activity>
-<!--        <activity-->
-<!--            android:name=".ui.element.activity.SplashActivity"-->
-<!--            android:exported="true"-->
-<!--            android:theme="@style/splashScreenThem">-->
-<!--        </activity>-->
 
     </application>
 
