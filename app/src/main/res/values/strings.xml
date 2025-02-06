@@ -50,4 +50,7 @@
     <string name="phnom_penh">Phnom Penh</string>
     <string name="search">Search</string>
     <string name="nham">Nham</string>
+    <string name="select_items_to_reoder">Select Items to reoder</string>
+    <string name="your_rate_this">Your Rate this</string>
+    <string name="my_order_history">My Order History</string>
 </resources>

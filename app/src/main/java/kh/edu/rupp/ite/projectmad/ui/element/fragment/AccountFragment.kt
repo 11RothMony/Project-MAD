@@ -57,6 +57,10 @@ class AccountFragment : BaseFragment() {
 
         setupUi()
         viewModel.fetchProfile()
+        binding.btnMyOrder.setOnClickListener{
+            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
+            switchToMyOrder()
+        }
     }
 
 
@@ -129,6 +133,13 @@ class AccountFragment : BaseFragment() {
         }
 
         loginButton.visibility = View.GONE
+    }
+    private fun switchToMyOrder(){
+        val fragmentMyOrder = MyOrderFragment() // Create an instance of the fragment
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lyFragment, fragmentMyOrder) // Replace the current fragment
+            .addToBackStack("HomeFragment") // Optional: Add the transaction to the back stack
+            .commit()
     }
 
 }

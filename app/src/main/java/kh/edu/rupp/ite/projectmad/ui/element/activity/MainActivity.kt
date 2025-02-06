@@ -33,7 +33,7 @@ class MainActivity : BaseActivity() {
     private lateinit var activeFragment: Fragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DynamicColors.applyToActivitiesIfAvailable(application);
+//        DynamicColors.applyToActivitiesIfAvailable(application);
 
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -44,8 +44,6 @@ class MainActivity : BaseActivity() {
         setupFragment()
         setupBottomNavBar()
         FirebaseApp.initializeApp(this)
-
-
 
     }
 
