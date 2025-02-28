@@ -91,8 +91,8 @@ class FragmentMenu : BaseFragment() {
             .replace(R.id.lyFragment, fragmentHome) // Replace the current fragment
             .addToBackStack("HomeFragment") // Optional: Add the transaction to the back stack
             .commit()
-    }
 
+    }
 
 }
 

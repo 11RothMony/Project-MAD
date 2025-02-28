@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +19,7 @@ import kh.edu.rupp.ite.projectmad.data.model.NewProductData
 import kh.edu.rupp.ite.projectmad.data.model.PromotionData
 import kh.edu.rupp.ite.projectmad.data.model.State
 import kh.edu.rupp.ite.projectmad.databinding.FragmentHomeBinding
+import kh.edu.rupp.ite.projectmad.ui.element.activity.MyOrderActivity
 import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListNewProductAdapter
 import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListPopularAdapter
 import kh.edu.rupp.ite.projectmad.ui.element.adapter.ListPromotionAdapter
@@ -31,8 +33,8 @@ class HomeFragment : BaseFragment() {
     private lateinit var binding: FragmentHomeBinding
 
     private val populaviewModel by viewModels<PopularViewModel>()
-    private val newProductViewModel by viewModels<NewProductViewModel> ()
-    private val promotionViewModel by viewModels<PromotionViewModel> ()
+    private val newProductViewModel by viewModels<NewProductViewModel>()
+    private val promotionViewModel by viewModels<PromotionViewModel>()
 
 
     override fun onCreateView(
@@ -77,13 +79,15 @@ class HomeFragment : BaseFragment() {
 
         populaviewModel.menuListData.observe(viewLifecycleOwner) { popularState ->
             val newProductState = newProductViewModel.menuListData.value ?: ApiState.loading()
-            val promotionState = promotionViewModel.menuListDataPromotion.value ?: ApiState.loading()
+            val promotionState =
+                promotionViewModel.menuListDataPromotion.value ?: ApiState.loading()
             handleState(popularState, newProductState, promotionState)
         }
 
         newProductViewModel.menuListData.observe(viewLifecycleOwner) { newProductState ->
             val popularState = populaviewModel.menuListData.value ?: ApiState.loading()
-            val promotionState = promotionViewModel.menuListDataPromotion.value ?: ApiState.loading()
+            val promotionState =
+                promotionViewModel.menuListDataPromotion.value ?: ApiState.loading()
             handleState(popularState, newProductState, promotionState)
         }
 
@@ -94,7 +98,7 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    private fun switchToMenu() {
+        private fun switchToMenu() {
         val fragmentMenu = FragmentMenu() // Create an instance of the fragment
         parentFragmentManager.beginTransaction()
             .replace(R.id.lyFragment, fragmentMenu) // Replace the current fragment
@@ -103,8 +107,11 @@ class HomeFragment : BaseFragment() {
     }
 
 
-
-    private fun handleState(popularState: ApiState<List<MostPopularData>>, newProductState: ApiState<List<NewProductData>>, promotionState: ApiState<List<PromotionData>>) {
+    private fun handleState(
+        popularState: ApiState<List<MostPopularData>>,
+        newProductState: ApiState<List<NewProductData>>,
+        promotionState: ApiState<List<PromotionData>>,
+    ) {
         when (popularState.state) {
             State.Loading -> showLoading()
             State.Success -> {
@@ -115,7 +122,7 @@ class HomeFragment : BaseFragment() {
 
             State.Error -> {
                 showAlert("Error", popularState.message ?: "unexpected Error")
-                Log.d("ErroronMenu", popularState.message?: "k")
+                Log.d("ErroronMenu", popularState.message ?: "k")
                 hideLoading()
             }
 
@@ -127,11 +134,16 @@ class HomeFragment : BaseFragment() {
                 hideLoading()
                 displayNewProduct(newProductState.data ?: emptyList())
             }
+
             State.Error -> {
-                showAlert("Error in New Product Data", newProductState.message ?: "Unexpected Error")
+                showAlert(
+                    "Error in New Product Data",
+                    newProductState.message ?: "Unexpected Error"
+                )
                 Log.d("ErrorOnNewProduct", newProductState.message ?: "No message")
                 hideLoading()
             }
+
             else -> {}
         }
 
@@ -142,11 +154,13 @@ class HomeFragment : BaseFragment() {
                 hideLoading()
                 displayPromotion(promotionState.data ?: emptyList())
             }
+
             State.Error -> {
                 showAlert("Error in New Product Data", promotionState.message ?: "Unexpected Error")
                 Log.d("ErrorOnNewProduct", promotionState.message ?: "No message")
                 hideLoading()
             }
+
             else -> {}
         }
     }
@@ -172,8 +186,6 @@ class HomeFragment : BaseFragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.recycleviewOnPromotion.adapter = ListPromotionAdapter(product)
     }
-
-
 
 
 }

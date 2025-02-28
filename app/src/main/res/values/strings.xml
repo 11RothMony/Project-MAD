@@ -53,4 +53,11 @@
     <string name="select_items_to_reoder">Select Items to reoder</string>
     <string name="your_rate_this">Your Rate this</string>
     <string name="my_order_history">My Order History</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_in_with_google">Sign In with Google</string>
+    <string name="create_your_account">Create Your Account</string>
+    <string name="enter_details_below_to_create_new_account">Enter details below to create new account</string>
+    <string name="your_phone_number_inpu">Your phone number*</string>
+    <string name="enter_password">Enter password*</string>
+    <string name="create_account">Create Account</string>
 </resources>

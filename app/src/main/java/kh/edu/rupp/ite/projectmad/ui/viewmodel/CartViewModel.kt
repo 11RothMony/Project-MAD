@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
 import kh.edu.rupp.ite.projectmad.data.model.CartManager
 import kh.edu.rupp.ite.projectmad.data.model.MenuListData
 import kotlinx.coroutines.launch

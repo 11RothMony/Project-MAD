@@ -22,7 +22,7 @@ import kh.edu.rupp.ite.projectmad.ui.viewmodel.CartInNavigationBarViewModel
 import kh.edu.rupp.ite.visitme.ui.element.activity.BaseActivity
 
 class MainActivity : BaseActivity() {
-    private val cartViewModel by viewModels<CartInNavigationBarViewModel>()
+//    private val cartViewModel by viewModels<CartInNavigationBarViewModel>()
     private lateinit var binding: ActivityMainBinding
 
     private val homeFragment = HomeFragment()
@@ -98,7 +98,6 @@ class MainActivity : BaseActivity() {
 
         fragmentTransaction.commit()
     }
-
 
     private fun removeCurrentFragment() {
         val currentFragment = supportFragmentManager.findFragmentById(R.id.lyFragment)

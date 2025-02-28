@@ -107,6 +107,9 @@ dependencies {
 
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+
+
 //    implementation ("com.google.firebase:firebase-firestore-ktx:25.1.1")
 //    implementation ("com.google.firebase:firebase-auth-ktx")
 //    implementation ("com.google.firebase:firebase-functions-ktx")

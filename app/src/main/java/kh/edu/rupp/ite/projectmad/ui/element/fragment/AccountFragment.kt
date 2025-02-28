@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +19,7 @@ import kh.edu.rupp.ite.projectmad.data.model.ProfileUser
 import kh.edu.rupp.ite.projectmad.data.model.State
 import kh.edu.rupp.ite.projectmad.databinding.FragmentAccountBinding
 import kh.edu.rupp.ite.projectmad.ui.element.activity.LoginActivity
+import kh.edu.rupp.ite.projectmad.ui.element.activity.MyOrderActivity
 import kh.edu.rupp.ite.projectmad.ui.viewmodel.ProfileViewModel
 
 class AccountFragment : BaseFragment() {
@@ -57,8 +57,7 @@ class AccountFragment : BaseFragment() {
 
         setupUi()
         viewModel.fetchProfile()
-        binding.btnMyOrder.setOnClickListener{
-            Toast.makeText(context, "Hello", Toast.LENGTH_SHORT).show()
+        binding.btnMyOrder.setOnClickListener {
             switchToMyOrder()
         }
     }
@@ -85,7 +84,7 @@ class AccountFragment : BaseFragment() {
     }
 
 
-   private fun handleState(state: ApiState<ProfileUser>) {
+    private fun handleState(state: ApiState<ProfileUser>) {
         when (state.state) {
             State.Loading -> showLoading()
             State.Success -> {
@@ -134,12 +133,10 @@ class AccountFragment : BaseFragment() {
 
         loginButton.visibility = View.GONE
     }
-    private fun switchToMyOrder(){
-        val fragmentMyOrder = MyOrderFragment() // Create an instance of the fragment
-        parentFragmentManager.beginTransaction()
-            .replace(R.id.lyFragment, fragmentMyOrder) // Replace the current fragment
-            .addToBackStack("HomeFragment") // Optional: Add the transaction to the back stack
-            .commit()
-    }
 
+    private fun switchToMyOrder() {
+        val intent = Intent(requireContext(), MyOrderActivity::class.java)
+        startActivity(intent)
+        requireActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+    }
 }

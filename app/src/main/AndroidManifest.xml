@@ -28,9 +28,13 @@
             </intent-filter>
         </activity>
 
-
         <activity
             android:name=".ui.element.activity.LoginActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".ui.element.activity.MyOrderActivity"
             android:exported="true">
         </activity>
 

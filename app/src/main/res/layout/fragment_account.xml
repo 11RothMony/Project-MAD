@@ -112,7 +112,7 @@
         android:layout_gravity="center"
         android:text="@string/loginProfile"
         android:textSize="25sp"
-        android:background="@drawable/bg_button_green"
+        android:background="@drawable/bg_button_blue"
         android:textColor="@color/white"
         android:textStyle="bold" />
 

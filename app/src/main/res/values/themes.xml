@@ -2,8 +2,7 @@
     <!-- Base application theme. -->
 <!--    <style name="Base.Theme.ProjectMAD" parent="Theme.AppCompat.Light.NoActionBar">-->
 <!--    <style name="Base.Theme.ProjectMAD" parent="Theme.MaterialComponents.DayNight.NoActionBar">-->
-    <style name="Base.Theme.ProjectMAD" parent="Theme.Material3.DayNight">
-
+    <style name="Base.Theme.ProjectMAD" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/solid_green</item>
     </style>
