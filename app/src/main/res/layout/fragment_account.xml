@@ -173,6 +173,31 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/payment_methods_option"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="30dp"
+            tools:ignore="UseCompoundDrawables"
+            android:background="@drawable/bg_whitegray_circle">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/baseline_payment_24"
+                android:layout_marginStart="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/payment_methods"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginBottom="30dp"

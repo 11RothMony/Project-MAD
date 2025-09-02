@@ -101,5 +101,9 @@ class ApiClient private constructor() {
             }
             return instance!!
         }
+
+        fun createApiService(): ApiService {
+            return get().apiService
+        }
     }
 }
