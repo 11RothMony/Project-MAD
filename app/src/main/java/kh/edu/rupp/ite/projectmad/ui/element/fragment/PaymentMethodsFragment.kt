@@ -128,12 +128,12 @@ class PaymentMethodsFragment : BaseFragment() {
                 hideLoading()
                 state.data?.let { response ->
                     if (response.success) {
-                        Toast.makeText(requireContext(), "Credit card deleted successfully", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), R.string.credit_card_deleted_successfully, Toast.LENGTH_SHORT).show()
                         if (response.affectedSubscriptions.isNotEmpty()) {
                             showAffectedSubscriptionsDialog(response.affectedSubscriptions)
                         }
                     } else {
-                        showAlert("Error", response.message)
+                        showAlert(getString(R.string.error_deleting_credit_card), response.message)
                     }
                 }
             }
@@ -150,33 +150,35 @@ class PaymentMethodsFragment : BaseFragment() {
         val relatedSubscriptions = paymentViewModel.getSubscriptionsByCardId(creditCard.id)
         
         val message = if (relatedSubscriptions.isNotEmpty()) {
-            "This credit card is being used by ${relatedSubscriptions.size} subscription(s). " +
-            "Deleting it will affect these subscriptions. Do you want to continue?"
+            getString(R.string.delete_card_with_subscriptions, relatedSubscriptions.size)
         } else {
-            "Are you sure you want to delete this credit card?"
+            getString(R.string.delete_card_confirmation)
         }
 
         AlertDialog.Builder(requireContext())
-            .setTitle("Delete Credit Card")
+            .setTitle(R.string.delete_credit_card)
             .setMessage(message)
-            .setPositiveButton("Delete") { _, _ ->
+            .setPositiveButton(R.string.delete_credit_card) { _, _ ->
                 val userId = auth.currentUser?.uid ?: ""
                 paymentViewModel.deleteCreditCard(creditCard.id, userId)
             }
-            .setNegativeButton("Cancel", null)
+            .setNegativeButton(android.R.string.cancel, null)
             .show()
     }
 
     private fun showSubscriptionManagementDialog(subscription: Subscription) {
-        val options = arrayOf("Change Payment Method", "Cancel Subscription")
+        val options = arrayOf(
+            getString(R.string.change_payment_method), 
+            getString(R.string.cancel_subscription)
+        )
         
         AlertDialog.Builder(requireContext())
-            .setTitle("Manage ${subscription.planName}")
+            .setTitle(getString(R.string.manage_subscription) + " ${subscription.planName}")
             .setItems(options) { _, which ->
                 when (which) {
                     0 -> {
                         // Change payment method - this would open a payment method selection dialog
-                        Toast.makeText(requireContext(), "Change payment method feature coming soon", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), R.string.feature_coming_soon, Toast.LENGTH_SHORT).show()
                     }
                     1 -> {
                         // Cancel subscription
@@ -189,24 +191,25 @@ class PaymentMethodsFragment : BaseFragment() {
 
     private fun showCancelSubscriptionDialog(subscription: Subscription) {
         AlertDialog.Builder(requireContext())
-            .setTitle("Cancel Subscription")
-            .setMessage("Are you sure you want to cancel your ${subscription.planName} subscription?")
-            .setPositiveButton("Cancel Subscription") { _, _ ->
-                Toast.makeText(requireContext(), "Subscription cancellation feature coming soon", Toast.LENGTH_SHORT).show()
+            .setTitle(R.string.cancel_subscription)
+            .setMessage(getString(R.string.cancel_subscription_confirmation, subscription.planName))
+            .setPositiveButton(R.string.cancel_subscription) { _, _ ->
+                Toast.makeText(requireContext(), R.string.feature_coming_soon, Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Keep Subscription", null)
+            .setNegativeButton(R.string.keep_subscription, null)
             .show()
     }
 
     private fun showAffectedSubscriptionsDialog(affectedSubscriptions: List<String>) {
-        val message = "The following subscriptions were affected by the credit card deletion:\n\n" +
-                affectedSubscriptions.joinToString("\n") + 
-                "\n\nPlease update their payment methods."
+        val message = getString(
+            R.string.subscriptions_affected_message, 
+            affectedSubscriptions.joinToString("\n")
+        )
         
         AlertDialog.Builder(requireContext())
-            .setTitle("Subscriptions Affected")
+            .setTitle(R.string.subscriptions_affected)
             .setMessage(message)
-            .setPositiveButton("OK", null)
+            .setPositiveButton(android.R.string.ok, null)
             .show()
     }
 

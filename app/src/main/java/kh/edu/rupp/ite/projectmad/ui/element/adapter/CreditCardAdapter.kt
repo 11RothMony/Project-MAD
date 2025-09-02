@@ -25,7 +25,11 @@ class CreditCardAdapter(
         fun bind(creditCard: CreditCard) {
             cardNumberTextView.text = creditCard.maskedCardNumber
             cardHolderTextView.text = creditCard.cardHolderName
-            cardExpiryTextView.text = "Expires ${creditCard.expiryMonth}/${creditCard.expiryYear}"
+            cardExpiryTextView.text = itemView.context.getString(
+                R.string.expires, 
+                creditCard.expiryMonth, 
+                creditCard.expiryYear
+            )
             
             // Show default label if this is the default card
             defaultLabelTextView.visibility = if (creditCard.isDefault) View.VISIBLE else View.GONE

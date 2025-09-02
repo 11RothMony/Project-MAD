@@ -29,13 +29,19 @@ class SubscriptionAdapter(
             subscriptionNameTextView.text = subscription.planName
             subscriptionDescriptionTextView.text = subscription.description
             subscriptionPriceTextView.text = "${subscription.currency}${subscription.price}/${subscription.billingCycle.lowercase()}"
-            nextBillingTextView.text = "Next billing: ${subscription.nextBillingDate}"
+            nextBillingTextView.text = itemView.context.getString(
+                R.string.next_billing, 
+                subscription.nextBillingDate
+            )
             statusTextView.text = subscription.status
             
             // Find the associated credit card
             val associatedCard = creditCards.find { it.id == subscription.paymentMethodId }
             paymentMethodTextView.text = if (associatedCard != null) {
-                "Payment: ${associatedCard.maskedCardNumber}"
+                itemView.context.getString(
+                    R.string.payment_card, 
+                    associatedCard.maskedCardNumber
+                )
             } else {
                 "Payment: Unknown"
             }

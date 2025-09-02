@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Payment Methods"
+            android:text="@string/payment_methods"
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Credit Cards"
+            android:text="@string/credit_cards"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
@@ -68,7 +68,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Subscriptions"
+            android:text="@string/subscriptions"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="12dp" />
