@@ -31,6 +31,7 @@ class AccountFragment : BaseFragment() {
     private lateinit var loginButton: Button
     private lateinit var signOutButton: LinearLayout
     private lateinit var lineaProfile: LinearLayout
+    private lateinit var paymentMethodsOption: LinearLayout
 
     private lateinit var auth: FirebaseAuth
 
@@ -52,6 +53,7 @@ class AccountFragment : BaseFragment() {
         loginButton = view.findViewById(R.id.myButton)
         signOutButton = view.findViewById(R.id.btnSignOut)
         lineaProfile = view.findViewById(R.id.linearProfile)
+        paymentMethodsOption = view.findViewById(R.id.payment_methods_option)
 
         auth = FirebaseAuth.getInstance()
 
@@ -128,7 +130,19 @@ class AccountFragment : BaseFragment() {
             startActivity(Intent(requireContext(), LoginActivity::class.java))
         }
 
+        paymentMethodsOption.setOnClickListener {
+            navigateToPaymentMethods()
+        }
+
         loginButton.visibility = View.GONE
+    }
+
+    private fun navigateToPaymentMethods() {
+        val fragment = PaymentMethodsFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lyFragment, fragment)
+            .addToBackStack("PaymentMethodsFragment")
+            .commit()
     }
 
 }

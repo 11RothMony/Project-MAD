@@ -7,9 +7,14 @@ import kh.edu.rupp.ite.projectmad.data.model.MostPopularData
 import kh.edu.rupp.ite.projectmad.data.model.NewProductData
 import kh.edu.rupp.ite.projectmad.data.model.ProfileUser
 import kh.edu.rupp.ite.projectmad.data.model.PromotionData
+import kh.edu.rupp.ite.projectmad.data.model.PaymentMethodsResponse
+import kh.edu.rupp.ite.projectmad.data.model.DeleteCreditCardRequest
+import kh.edu.rupp.ite.projectmad.data.model.DeleteCreditCardResponse
 //import kh.edu.rupp.ite.projectmad.data.model.UserProfileResponse
 
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface ApiService {
 
@@ -37,4 +42,11 @@ interface ApiService {
 
     @GET("promotion")
     suspend fun loadPromotion(): ApiResponse<List<PromotionData>>
+
+    // Payment Methods APIs
+    @GET("payment-methods")
+    suspend fun getPaymentMethods(): ApiResponse<PaymentMethodsResponse>
+
+    @POST("payment-methods/credit-card/delete")
+    suspend fun deleteCreditCard(@Body request: DeleteCreditCardRequest): ApiResponse<DeleteCreditCardResponse>
 }

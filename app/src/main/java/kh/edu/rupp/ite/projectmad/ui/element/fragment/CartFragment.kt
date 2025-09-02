@@ -34,6 +34,7 @@ class CartFragment : BaseFragment() {
     private lateinit var haveDataInCart: LinearLayout
     private lateinit var orderBtn: Button
     private lateinit var bottomNavigationView: BottomNavigationView
+    private lateinit var selectPaymentMethodLayout: LinearLayout
 
 
     override fun onCreateView(
@@ -57,6 +58,7 @@ class CartFragment : BaseFragment() {
         haveDataInCart = view.findViewById(R.id.whenHaveData)
         orderBtn = view.findViewById(R.id.orderBtn)
         bottomNavigationView = requireActivity().findViewById(R.id.bottomNavigation)
+        selectPaymentMethodLayout = view.findViewById(R.id.select_payment_method_layout)
 
 
         setupObserver()
@@ -69,6 +71,10 @@ class CartFragment : BaseFragment() {
         orderBtn.setOnClickListener {
             cartViewModel.onButtonClicked()
             switchToCart()
+        }
+
+        selectPaymentMethodLayout.setOnClickListener {
+            navigateToPaymentMethods()
         }
 //        onPause()
 
@@ -165,6 +171,14 @@ class CartFragment : BaseFragment() {
 //        // Change Bottom Navigation to Order
 //        bottomNavigationView.selectedItemId = R.id.menuOrders
 //    }
+
+    private fun navigateToPaymentMethods() {
+        val fragment = PaymentMethodsFragment()
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.lyFragment, fragment)
+            .addToBackStack("PaymentMethodsFragment")
+            .commit()
+    }
 
 //    private fun removeCurrentFragment() {
 //        val currentFragment = parentFragmentManager.findFragmentById(R.id.lyFragment)
